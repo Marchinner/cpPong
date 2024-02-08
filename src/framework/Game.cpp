@@ -1,9 +1,9 @@
-#include "../../include/cpPong/framework/Game.h"
-#include "../../include/cpPong/framework/Window.h"
+#include "cpPong/framework/Game.h"
+#include "cpPong/framework/Window.h"
 #include <SFML/Graphics.hpp>
 
 Game::Game()
-	: m_window{ new Window(800, 600, "SFML")}
+	: m_window{ new Window(800, 600, "C++ Pong Game Clone")}
 {
 
 }

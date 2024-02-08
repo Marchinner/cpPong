@@ -1,4 +1,4 @@
-#include "../include/cpPong/framework/Game.h"
+#include "cpPong/framework/Game.h"
 
 int main(int argc, char* argv[])
 {
