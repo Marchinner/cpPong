@@ -22,6 +22,7 @@ public:
 	void set_is_moving_down(bool value);
 private:
 	sf::RectangleShape* m_player;
+	float m_speed;
 	bool is_moving_up;
 	bool is_moving_down;
 };

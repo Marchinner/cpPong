@@ -7,6 +7,7 @@ class Ball;
 namespace sf
 {
 	class Time;
+	class RectangleShape;
 }
 
 class Game
@@ -25,5 +26,6 @@ private:
 	Window* m_window;
 	Player* m_player;
 	Ball* m_ball;
+	sf::RectangleShape* m_background;
 	static const sf::Time TimePerFrame;
 };

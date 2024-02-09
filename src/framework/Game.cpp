@@ -8,11 +8,15 @@
 const sf::Time Game::TimePerFrame{ sf::seconds(1.f / 60.f) };
 
 Game::Game()
-	: m_window{ new Window(800, 600, "C++ Pong Game Clone") }
+	: m_window{ new Window(820, 620, "C++ Pong Game Clone") }
 	, m_player{ new Player(sf::Vector2f(30.f, 275.f)) }
 	, m_ball{ new Ball() }
+	, m_background{new sf::RectangleShape(sf::Vector2f(800.f, 600.f))}
 {
-
+	m_background->setFillColor(sf::Color::Transparent);
+	m_background->setOutlineColor(sf::Color::Red);
+	m_background->setOutlineThickness(2.f);
+	m_background->setPosition(sf::Vector2f(10.f, 10.f));
 }
 
 Game::~Game()
@@ -82,4 +86,5 @@ void Game::render_internal()
 {
 	m_window->get_window()->draw(m_player->get_player());
 	m_window->get_window()->draw(m_ball->get_ball());
+	m_window->get_window()->draw(*m_background);
 }

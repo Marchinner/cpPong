@@ -17,5 +17,6 @@ public:
 	const sf::CircleShape& get_ball();
 private:
 	sf::CircleShape* m_ball;
-	float m_speed;
+	float m_x_speed;
+	float m_y_speed;
 };
