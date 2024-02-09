@@ -1,14 +1,16 @@
 #include "cpPong/framework/Game.h"
 #include "cpPong/framework/Window.h"
 #include "cpPong/entities/Player.h"
+#include "cpPong/entities/Ball.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
 const sf::Time Game::TimePerFrame{ sf::seconds(1.f / 60.f) };
 
 Game::Game()
-	: m_window{ new Window(800, 600, "C++ Pong Game Clone")}
-	, m_player{ new Player(sf::Vector2f(350.f, 300.f), sf::Vector2f(0.f,0.f))}
+	: m_window{ new Window(800, 600, "C++ Pong Game Clone") }
+	, m_player{ new Player(sf::Vector2f(30.f, 275.f)) }
+	, m_ball{ new Ball() }
 {
 
 }
@@ -66,6 +68,7 @@ void Game::process_events()
 void Game::update(sf::Time deltaTime)
 {
 	m_player->update(deltaTime);
+	m_ball->update(deltaTime);
 }
 
 void Game::render()
@@ -78,4 +81,5 @@ void Game::render()
 void Game::render_internal()
 {
 	m_window->get_window()->draw(m_player->get_player());
+	m_window->get_window()->draw(m_ball->get_ball());
 }

@@ -12,10 +12,10 @@ class Player : public Entity
 {
 
 public:
-	Player(const sf::Vector2f& position, const sf::Vector2f& velocity);
-	Player(float x_position, float y_position, float x_velocity, float y_velocity);
+	Player(const sf::Vector2f& position);
+	Player(float x_position, float y_position);
 
-	sf::RectangleShape& get_player();
+	const sf::RectangleShape& get_player();
 	void update(const sf::Time& deltaTime);
 
 	void set_is_moving_up(bool value);

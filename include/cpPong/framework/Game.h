@@ -2,6 +2,7 @@
 
 class Window;
 class Player;
+class Ball;
 
 namespace sf
 {
@@ -23,5 +24,6 @@ private:
 private:
 	Window* m_window;
 	Player* m_player;
+	Ball* m_ball;
 	static const sf::Time TimePerFrame;
 };

@@ -1,15 +1,15 @@
 #include "cpPong/entities/Entity.h"
 
 
-Entity::Entity(const sf::Vector2f &position, const sf::Vector2f &velocity)
+Entity::Entity(const sf::Vector2f &position)
 	: m_position{ position }
-	, m_velocity{ velocity }
+	, m_velocity{ sf::Vector2f(0.f, 0.f)}
 {
 
 }
 
-Entity::Entity(float x_position, float y_position, float x_velocity, float y_velocity)
+Entity::Entity(float x_position, float y_position)
 	: m_position{sf::Vector2f(x_position, y_position)}
-	, m_velocity{sf::Vector2f(x_velocity, y_velocity)}
+	, m_velocity{sf::Vector2f(0.f, 0.f)}
 {
 }
