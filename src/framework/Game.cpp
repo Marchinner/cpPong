@@ -2,6 +2,7 @@
 #include "cpPong/framework/Window.h"
 #include "cpPong/entities/Player.h"
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 const sf::Time Game::TimePerFrame{ sf::seconds(1.f / 60.f) };
 
@@ -41,16 +42,30 @@ void Game::process_events()
 	sf::Event event;
 	while (m_window->get_window()->pollEvent(event))
 	{
-		if (event.type == sf::Event::Closed)
+		switch (event.type)
 		{
+		case sf::Event::Closed:
 			m_window->get_window()->close();
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+		{
+			m_player->set_is_moving_up(true);
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+		{
+			m_player->set_is_moving_down(true);
+		}
+		else
+		{
+			m_player->set_is_moving_up(false);
+			m_player->set_is_moving_down(false);
 		}
 	}
 }
 
 void Game::update(sf::Time deltaTime)
 {
-	
+	m_player->update(deltaTime);
 }
 
 void Game::render()
