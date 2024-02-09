@@ -83,11 +83,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\entities\Ball.cpp" />
+    <ClCompile Include="src\entities\Entity.cpp" />
+    <ClCompile Include="src\entities\Player.cpp" />
     <ClCompile Include="src\framework\Game.cpp" />
     <ClCompile Include="src\framework\Window.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\cpPong\entities\Ball.h" />
+    <ClInclude Include="include\cpPong\entities\Entity.h" />
+    <ClInclude Include="include\cpPong\entities\Player.h" />
     <ClInclude Include="include\cpPong\framework\Game.h" />
     <ClInclude Include="include\cpPong\framework\Window.h" />
   </ItemGroup>

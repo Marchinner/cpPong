@@ -1,11 +1,13 @@
 #pragma once
 
 class Window;
+class Player;
 
 class Game
 {
 public:
 	Game();
+	~Game();
 	void start();
 	
 private:
@@ -15,4 +17,5 @@ private:
 	void render_internal();
 private:
 	Window* m_window;
+	Player* m_player;
 };
