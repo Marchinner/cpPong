@@ -22,10 +22,13 @@ private:
 	void update(sf::Time deltaTime);
 	void render();
 	void render_internal();
+
+	void check_score();
 private:
 	Window* m_window;
 	Player* m_player;
 	Ball* m_ball;
+	int m_score;
 	sf::RectangleShape* m_background;
 	static const sf::Time TimePerFrame;
 };

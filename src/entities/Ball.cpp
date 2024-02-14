@@ -19,21 +19,25 @@ const sf::CircleShape& Ball::get_ball()
 	return *m_ball;
 }
 
-void Ball::revert_direction()
+void Ball::revert_x_speed()
 {
 	m_x_speed *= -1.f;
+}
+
+void Ball::revert_y_speed()
+{
 	m_y_speed *= -1.f;
 }
 
-void Ball::update(const sf::Time deltaTime)
+void Ball::update()
 {
 	m_ball->move(m_x_speed, m_y_speed);
-	if (m_ball->getPosition().x - m_ball->getRadius() <= 0 || m_ball->getPosition().x + m_ball->getRadius() >= 800.f)
+	/*if (m_ball->getPosition().x - m_ball->getRadius() <= 0 || m_ball->getPosition().x + m_ball->getRadius() >= 800.f)
 	{
 		m_x_speed *= -1;
 	}
 	if (m_ball->getPosition().y - m_ball->getRadius() <= 0 || m_ball->getPosition().y + m_ball->getRadius() >= 600.f)
 	{
 		m_y_speed *= -1;
-	}
+	}*/
 }

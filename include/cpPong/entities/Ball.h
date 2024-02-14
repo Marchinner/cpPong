@@ -15,9 +15,10 @@ class Ball : public Entity
 public:
 	Ball();
 
-	void update(const sf::Time deltaTime);
+	void update();
 	const sf::CircleShape& get_ball();
-	void revert_direction();
+	void revert_x_speed();
+	void revert_y_speed();
 
 private:
 	sf::CircleShape* m_ball;

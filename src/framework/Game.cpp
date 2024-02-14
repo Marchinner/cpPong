@@ -11,7 +11,8 @@ Game::Game()
 	: m_window{ new Window(820, 620, "C++ Pong Game Clone") }
 	, m_player{ new Player(sf::Vector2f(30.f, 275.f)) }
 	, m_ball{ new Ball() }
-	, m_background{new sf::RectangleShape(sf::Vector2f(800.f, 600.f))}
+	, m_score{ 0 }
+	, m_background{ new sf::RectangleShape(sf::Vector2f(800.f, 600.f)) }
 {
 	m_background->setFillColor(sf::Color::Transparent);
 	m_background->setOutlineColor(sf::Color::Red);
@@ -72,16 +73,8 @@ void Game::process_events()
 void Game::update(sf::Time deltaTime)
 {
 	m_player->update(deltaTime);
-	m_ball->update(deltaTime);
-
-	if ((m_ball->get_ball().getPosition().y >= m_player->get_player().getPosition().y) && (m_ball->get_ball().getPosition().y <= m_player->get_player().getPosition().y + m_player->get_player().getSize().y))
-	{
-		if (m_ball->get_ball().getPosition().x <= m_player->get_player().getPosition().x + m_player->get_player().getSize().x)
-		{
-			m_ball->revert_direction();
-			std::cout << "HIT" << std::endl;
-		}
-	}
+	m_ball->update();
+	check_score();
 }
 
 void Game::render()
@@ -96,4 +89,27 @@ void Game::render_internal()
 	m_window->get_window()->draw(m_player->get_player());
 	m_window->get_window()->draw(m_ball->get_ball());
 	m_window->get_window()->draw(*m_background);
+}
+
+void Game::check_score()
+{
+	if (m_ball->get_ball().getPosition().x - m_ball->get_ball().getRadius() <= 0 || m_ball->get_ball().getPosition().x + m_ball->get_ball().getRadius() >= 800.f)
+	{
+		m_ball->revert_x_speed();
+		m_score--;
+	}
+	if (m_ball->get_ball().getPosition().y - m_ball->get_ball().getRadius() <= 0 || m_ball->get_ball().getPosition().y + m_ball->get_ball().getRadius() >= 600.f)
+	{
+		m_ball->revert_y_speed();
+	}
+
+	if ((m_ball->get_ball().getPosition().y >= m_player->get_player().getPosition().y) && (m_ball->get_ball().getPosition().y <= m_player->get_player().getPosition().y + m_player->get_player().getSize().y))
+	{
+		if (m_ball->get_ball().getPosition().x <= m_player->get_player().getPosition().x + m_player->get_player().getSize().x)
+		{
+			m_ball->revert_x_speed();
+			std::cout << "HIT" << std::endl;
+			m_score++;
+		}
+	}
 }
