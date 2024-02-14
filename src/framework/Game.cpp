@@ -73,6 +73,15 @@ void Game::update(sf::Time deltaTime)
 {
 	m_player->update(deltaTime);
 	m_ball->update(deltaTime);
+
+	if ((m_ball->get_ball().getPosition().y >= m_player->get_player().getPosition().y) && (m_ball->get_ball().getPosition().y <= m_player->get_player().getPosition().y + m_player->get_player().getSize().y))
+	{
+		if (m_ball->get_ball().getPosition().x <= m_player->get_player().getPosition().x + m_player->get_player().getSize().x)
+		{
+			m_ball->revert_direction();
+			std::cout << "HIT" << std::endl;
+		}
+	}
 }
 
 void Game::render()

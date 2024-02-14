@@ -8,6 +8,8 @@ namespace sf
 	class Time;
 }
 
+class Player;
+
 class Ball : public Entity
 {
 public:
@@ -15,6 +17,8 @@ public:
 
 	void update(const sf::Time deltaTime);
 	const sf::CircleShape& get_ball();
+	void revert_direction();
+
 private:
 	sf::CircleShape* m_ball;
 	float m_x_speed;

@@ -2,13 +2,14 @@
 #include <SFML/System/Vector2.hpp>
 #include <SFML/System/Time.hpp>
 #include "cpPong/entities/Ball.h"
+#include "cpPong/entities/Player.h"
 #include <iostream>
 
 Ball::Ball()
 	: Entity{ 395.f, 295.f }	// center of screen
-	, m_ball{new sf::CircleShape(10.f)}
-	, m_x_speed{5.f}
-	, m_y_speed{5.f}
+	, m_ball{ new sf::CircleShape(10.f) }
+	, m_x_speed{ 5.f }
+	, m_y_speed{ 5.f }
 {
 	m_ball->setPosition(m_position);
 }
@@ -16,6 +17,12 @@ Ball::Ball()
 const sf::CircleShape& Ball::get_ball()
 {
 	return *m_ball;
+}
+
+void Ball::revert_direction()
+{
+	m_x_speed *= -1.f;
+	m_y_speed *= -1.f;
 }
 
 void Ball::update(const sf::Time deltaTime)
@@ -29,7 +36,4 @@ void Ball::update(const sf::Time deltaTime)
 	{
 		m_y_speed *= -1;
 	}
-
-
-	std::cout << "X: " << m_ball->getPosition().x << "\tY: " << m_ball->getPosition().y << std::endl;
 }
